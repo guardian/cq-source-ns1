@@ -2,12 +2,13 @@
   "name": "@guardian/cq-source-ns1",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "test": "jest --detectOpenHandles",
     "lint": "eslint src/** --ext .ts --no-error-on-unmatched-pattern",
     "format": "prettier --write src/**/*.ts",
     "build": "tsc",
-    "start": "ts-node src/index.ts"
+    "start": "ts-node --esm src/index.ts"
   },
   "devDependencies": {
     "@guardian/eslint-config-typescript": "7.0.0",
