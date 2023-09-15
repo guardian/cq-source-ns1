@@ -1,6 +1,7 @@
 {
   "extends": "@guardian/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "moduleResolution": "nodenext"
   }
 }
