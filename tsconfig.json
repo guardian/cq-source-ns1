@@ -1,8 +1,6 @@
 {
   "extends": "@guardian/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
     "outDir": "dist"
   }
 }

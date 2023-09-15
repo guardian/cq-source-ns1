@@ -4,6 +4,4 @@ export async function main() {
 	return Promise.resolve(msg);
 }
 
-if (require.main === module) {
-	void (async () => await main())();
-}
+await main();
