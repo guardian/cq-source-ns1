@@ -11,7 +11,8 @@
     "start": "ts-node --esm src/index.ts serve"
   },
   "dependencies": {
-    "@cloudquery/plugin-sdk-javascript": "^0.0.6"
+    "@cloudquery/plugin-sdk-javascript": "^0.0.6",
+    "winston": "3.10.0"
   },
   "devDependencies": {
     "@guardian/eslint-config-typescript": "7.0.0",
