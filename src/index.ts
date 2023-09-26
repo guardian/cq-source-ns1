@@ -2,8 +2,7 @@ import { createServeCommand } from '@cloudquery/plugin-sdk-javascript/plugin/ser
 import { plugin } from './plugin.js';
 
 export function main() {
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-call ,@typescript-eslint/no-unsafe-member-access -- TODO
-	createServeCommand(plugin()).parse();
+	void createServeCommand(plugin()).parse();
 }
 
 main();
