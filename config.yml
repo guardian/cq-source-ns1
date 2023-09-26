@@ -1,0 +1,17 @@
+---
+kind: source
+spec:
+  name: "ns1"
+  registry: "grpc"
+  path: "localhost:7777"
+  tables: ['*']
+  destinations: ['file']
+---
+kind: destination
+spec:
+  name: "file"
+  path: "cloudquery/file"
+  version: "v3.4.6"
+  spec:
+    path: "data/{{TABLE}}/{{UUID}}.{{FORMAT}}"
+    format: "csv"

@@ -1,2 +1,11 @@
 node_modules
 dist
+
+# CloudQuery cache directory
+.cq
+
+# Output directory for CloudQuery
+data
+
+# CloudQuery log file
+cloudquery.log

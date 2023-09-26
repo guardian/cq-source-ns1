@@ -8,7 +8,8 @@
     "lint": "eslint src/** --ext .ts --no-error-on-unmatched-pattern",
     "format": "prettier --write src/**/*.ts",
     "build": "tsc",
-    "start": "ts-node --esm src/index.ts serve"
+    "start": "ts-node --esm src/index.ts serve",
+    "test:integration": "cloudquery sync config.yml --log-level debug"
   },
   "dependencies": {
     "@cloudquery/plugin-sdk-javascript": "^0.0.6",
