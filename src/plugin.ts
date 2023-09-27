@@ -3,6 +3,7 @@ import {
 	newUnimplementedDestination,
 } from '@cloudquery/plugin-sdk-javascript/plugin/plugin';
 import type {
+	Client,
 	NewClientFunction,
 	Plugin,
 	SyncOptions,
@@ -80,21 +81,21 @@ export const plugin = () => {
 		},
 	};
 
-	const newClient: NewClientFunction = async (
+	const newClient: NewClientFunction = (
 		logger,
 		spec,
 		{ noConnection },
-	) => {
+	): Promise<Client> => {
 		pluginClient.spec = parseSpec(spec);
 		pluginClient.client = { id: () => 'ns1' };
 
 		if (noConnection) {
 			pluginClient.allTables = [];
-			return pluginClient;
+			return Promise.resolve(pluginClient);
 		}
 
-		pluginClient.allTables = await getTables(logger, pluginClient.spec);
-		return pluginClient;
+		pluginClient.allTables = getTables(logger, pluginClient.spec);
+		return Promise.resolve(pluginClient);
 	};
 
 	pluginClient.plugin = newPlugin('NS1', version, newClient);
