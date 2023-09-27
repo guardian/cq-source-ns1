@@ -6,6 +6,8 @@ spec:
   path: "localhost:7777"
   tables: ['*']
   destinations: ['file']
+  spec:
+    apiKey: '1234'
 ---
 kind: destination
 spec:
