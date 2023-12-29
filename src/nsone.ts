@@ -17,27 +17,76 @@ async function nsoneRequest<T extends object>(
 	const response = await fetch(fullUrl, { method, headers });
 
 	if (response.ok) {
-		return (await response.json()) as T;
+		const json = (await response.json()) as unknown;
+		return json as T;
 	}
 
-	logger.info(`Error: ${await response.text()}`);
+	logger.info(`Error ${response.status}: ${await response.text()}`);
 	throw new Error('Non 200 status code returned from request');
 }
 
 export type ZoneSummary = {
 	id: string;
-	ttl: number;
-	nx_ttl: number;
-	retry: number;
-	zone: string;
-	refresh: number;
-	expiry: number;
+	created_at: number;
 	dns_servers: string[];
-	networks: number[];
-	network_pools: string[];
-	meta: Record<string, unknown>;
+	dnssec: boolean;
+	expiry: number;
 	hostmaster: string;
+	local_tags: string[];
+	name: string;
+	network_pools: string[];
+	networks: number[];
+	nx_ttl: number;
+	primary: Record<string, unknown>;
+	primary_master: string;
+	refresh: number;
+	retry: number;
+	serial: number;
+	ttl: number;
+	updated_at: number;
+	zone: string;
 };
+
+export type DnsRecord = {
+	id: string;
+	domain: string;
+	link: string;
+	meta: Record<string, unknown>;
+	networks: number[];
+	regions: Record<string, unknown>;
+	short_answers: string[];
+	tier: number;
+	ttl: number;
+	type: string;
+	use_client_subnet: boolean;
+	zone: string;
+	zone_name: string;
+};
+
+export type ZoneSummaryWithRecords = ZoneSummary & {
+	records: DnsRecord[];
+};
+
+export type DnsRecordDetail = {
+	answers: Array<Record<string, unknown>>;
+	created_at: number;
+	domain: string;
+	feeds: string[];
+	filters: string[];
+	meta: Record<string, unknown>;
+	networks: number[];
+	regions: Record<string, unknown>;
+	tier: number;
+	ttl: number;
+	type: string;
+	updated_at: number;
+	use_client_subnet: boolean;
+	zone: string;
+	zone_name: string;
+	id: string;
+};
+
+export type DnsRecordWithDetail = DnsRecord & DnsRecordDetail;
 
 /**
  * Returns a list of all active DNS zones along with basic zone configuration details for each.
@@ -50,4 +99,37 @@ export function getZones(
 	apiKey: string,
 ): Promise<ZoneSummary[]> {
 	return nsoneRequest<ZoneSummary[]>(logger, 'GET', '/zones', apiKey);
+}
+
+export async function getRecords(
+	logger: Logger,
+	apiKey: string,
+	zoneSummary: ZoneSummary,
+): Promise<DnsRecord[]> {
+	const data = await nsoneRequest<ZoneSummaryWithRecords>(
+		logger,
+		'GET',
+		`/zones/${zoneSummary.zone}`,
+		apiKey,
+	);
+
+	return data.records;
+}
+
+export async function getRecordDetail(
+	logger: Logger,
+	apiKey: string,
+	dnsRecord: DnsRecord,
+): Promise<DnsRecordWithDetail> {
+	const details = await nsoneRequest<DnsRecordDetail>(
+		logger,
+		'GET',
+		`/zones/${dnsRecord.zone}/${dnsRecord.domain}/${dnsRecord.type}`,
+		apiKey,
+	);
+
+	return {
+		...dnsRecord,
+		...details,
+	};
 }

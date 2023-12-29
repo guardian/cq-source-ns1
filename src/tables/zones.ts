@@ -1,5 +1,5 @@
 import type { Writable } from 'stream';
-import { Int64, Utf8 } from '@cloudquery/plugin-sdk-javascript/arrow';
+import { Bool, Int64, Utf8 } from '@cloudquery/plugin-sdk-javascript/arrow';
 import { createColumn } from '@cloudquery/plugin-sdk-javascript/schema/column';
 import { pathResolver } from '@cloudquery/plugin-sdk-javascript/schema/resolvers';
 import { createTable } from '@cloudquery/plugin-sdk-javascript/schema/table';
@@ -37,29 +37,14 @@ export const zonesTable = (logger: Logger, spec: Spec): Table => {
 				resolver: pathResolver('id'),
 			}),
 			createColumn({
-				name: 'ttl',
+				name: 'created_at',
 				type: new Int64(),
-				resolver: pathResolver('ttl'),
+				resolver: pathResolver('created_at'),
 			}),
 			createColumn({
-				name: 'nx_ttl',
-				type: new Int64(),
-				resolver: pathResolver('nx_ttl'),
-			}),
-			createColumn({
-				name: 'retry',
-				type: new Int64(),
-				resolver: pathResolver('retry'),
-			}),
-			createColumn({
-				name: 'zone',
-				type: new Utf8(),
-				resolver: pathResolver('zone'),
-			}),
-			createColumn({
-				name: 'refresh',
-				type: new Int64(),
-				resolver: pathResolver('refresh'),
+				name: 'dnssec',
+				type: new Bool(),
+				resolver: pathResolver('dnssec'),
 			}),
 			createColumn({
 				name: 'expiry',
@@ -67,14 +52,19 @@ export const zonesTable = (logger: Logger, spec: Spec): Table => {
 				resolver: pathResolver('expiry'),
 			}),
 			createColumn({
-				name: 'dns_servers',
-				type: new JSONType(),
-				resolver: pathResolver('dns_servers'),
+				name: 'hostmaster',
+				type: new Utf8(),
+				resolver: pathResolver('hostmaster'),
 			}),
 			createColumn({
-				name: 'networks',
+				name: 'local_tags',
 				type: new JSONType(),
-				resolver: pathResolver('networks'),
+				resolver: pathResolver('local_tags'),
+			}),
+			createColumn({
+				name: 'name',
+				type: new Utf8(),
+				resolver: pathResolver('name'),
 			}),
 			createColumn({
 				name: 'network_pools',
@@ -82,14 +72,54 @@ export const zonesTable = (logger: Logger, spec: Spec): Table => {
 				resolver: pathResolver('network_pools'),
 			}),
 			createColumn({
-				name: 'meta',
+				name: 'networks',
 				type: new JSONType(),
-				resolver: pathResolver('meta'),
+				resolver: pathResolver('networks'),
 			}),
 			createColumn({
-				name: 'hostmaster',
+				name: 'nx_ttl',
+				type: new Int64(),
+				resolver: pathResolver('nx_ttl'),
+			}),
+			createColumn({
+				name: 'primary',
+				type: new JSONType(),
+				resolver: pathResolver('primary'),
+			}),
+			createColumn({
+				name: 'primary_master',
 				type: new Utf8(),
-				resolver: pathResolver('hostmaster'),
+				resolver: pathResolver('primary_master'),
+			}),
+			createColumn({
+				name: 'refresh',
+				type: new Int64(),
+				resolver: pathResolver('refresh'),
+			}),
+			createColumn({
+				name: 'retry',
+				type: new Int64(),
+				resolver: pathResolver('retry'),
+			}),
+			createColumn({
+				name: 'serial',
+				type: new Int64(),
+				resolver: pathResolver('serial'),
+			}),
+			createColumn({
+				name: 'ttl',
+				type: new Int64(),
+				resolver: pathResolver('ttl'),
+			}),
+			createColumn({
+				name: 'updated_at',
+				type: new Int64(),
+				resolver: pathResolver('updated_at'),
+			}),
+			createColumn({
+				name: 'zone',
+				type: new Utf8(),
+				resolver: pathResolver('zone'),
 			}),
 		],
 		resolver,
