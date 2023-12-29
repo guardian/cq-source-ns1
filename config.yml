@@ -7,11 +7,12 @@ spec:
   tables: ['*']
   destinations: ['file']
   spec:
-    apiKey: '1234'
+    apiKey: ${NSONE_API_KEY}
 ---
 kind: destination
 spec:
   name: "file"
+  registry: github
   path: "cloudquery/file"
   version: "v3.4.6"
   spec:
