@@ -16,7 +16,7 @@ import {
 } from '@cloudquery/plugin-sdk-javascript/schema/table';
 import { parseSpec } from './spec.js';
 import type { Spec } from './spec.js';
-import { getTables } from './tables.js';
+import { getTables } from './tables/index.js';
 
 type NS1Client = {
 	id: () => string;
