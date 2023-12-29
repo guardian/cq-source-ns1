@@ -9,10 +9,10 @@ import type {
 } from '@cloudquery/plugin-sdk-javascript/schema/table';
 import { JSONType } from '@cloudquery/plugin-sdk-javascript/types/json';
 import type { Logger } from 'winston';
-import { getZones } from './nsone.js';
-import type { Spec } from './spec.js';
+import { getZones } from '../nsone.js';
+import type { Spec } from '../spec.js';
 
-const zonesTable = (logger: Logger, spec: Spec): Table => {
+export const zonesTable = (logger: Logger, spec: Spec): Table => {
 	const resolver: TableResolver = async (
 		_clientMeta: unknown,
 		_parent: unknown,
@@ -94,8 +94,4 @@ const zonesTable = (logger: Logger, spec: Spec): Table => {
 		],
 		resolver,
 	});
-};
-
-export const getTables = (logger: Logger, spec: Spec): Table[] => {
-	return [zonesTable(logger, spec)];
 };
