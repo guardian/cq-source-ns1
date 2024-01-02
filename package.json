@@ -19,7 +19,7 @@
     "@guardian/eslint-config-typescript": "9.0.0",
     "@guardian/prettier": "7.0.0",
     "@guardian/tsconfig": "0.2.0",
-    "@types/node": "20.5.3",
+    "@types/node": "20.10.6",
     "eslint": "^8.56.0",
     "eslint-plugin-prettier": "5.1.2",
     "prettier": "^3.0.2",
