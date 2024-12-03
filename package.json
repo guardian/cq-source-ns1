@@ -20,7 +20,7 @@
     "@guardian/prettier": "8.0.1",
     "@guardian/tsconfig": "1.0.0",
     "@types/node": "22.10.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.16.0",
     "eslint-plugin-prettier": "5.2.1",
     "prettier": "^3.4.1",
     "tsx": "^4.19.2",
