@@ -12,7 +12,7 @@
     "test:integration": "cloudquery sync config.yml --log-level debug"
   },
   "dependencies": {
-    "@cloudquery/plugin-sdk-javascript": "^0.1.21",
+    "@cloudquery/plugin-sdk-javascript": "^0.1.22",
     "winston": "3.17.0"
   },
   "devDependencies": {
