@@ -16,24 +16,15 @@
     "winston": "3.17.0"
   },
   "devDependencies": {
-    "@guardian/eslint-config-typescript": "12.0.0",
+    "@guardian/eslint-config": "11.0.0",
     "@guardian/prettier": "8.0.1",
     "@guardian/tsconfig": "1.0.0",
     "@types/node": "22.15.29",
-    "eslint": "^8.57.0",
+    "eslint": "^9.28.0",
     "eslint-plugin-prettier": "5.4.1",
     "prettier": "^3.5.3",
     "tsx": "^4.19.4",
     "typescript": "5.5.4"
   },
-  "prettier": "@guardian/prettier",
-  "eslintConfig": {
-    "extends": "@guardian/eslint-config-typescript",
-    "plugins": [
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": "error"
-    }
-  }
+  "prettier": "@guardian/prettier"
 }
