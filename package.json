@@ -21,7 +21,7 @@
     "@guardian/tsconfig": "1.0.0",
     "@types/node": "24.1.0",
     "eslint": "^9.34.0",
-    "eslint-plugin-prettier": "5.5.3",
+    "eslint-plugin-prettier": "5.5.4",
     "prettier": "^3.6.2",
     "tsx": "^4.20.5",
     "typescript": "5.9.2"
