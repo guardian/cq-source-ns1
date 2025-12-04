@@ -23,7 +23,7 @@
     "eslint": "^9.39.1",
     "eslint-plugin-prettier": "5.5.4",
     "prettier": "^3.6.2",
-    "tsx": "^4.20.6",
+    "tsx": "^4.21.0",
     "typescript": "5.9.3"
   },
   "prettier": "@guardian/prettier"
