@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@cloudquery/plugin-sdk-javascript": "^0.1.30",
-    "winston": "3.18.3"
+    "winston": "3.19.0"
   },
   "devDependencies": {
     "@guardian/eslint-config": "12.0.1",
