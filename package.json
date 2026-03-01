@@ -16,7 +16,7 @@
     "winston": "3.19.0"
   },
   "devDependencies": {
-    "@guardian/eslint-config": "12.0.1",
+    "@guardian/eslint-config": "13.0.6",
     "@guardian/prettier": "10.0.0",
     "@guardian/tsconfig": "1.0.1",
     "@types/node": "25.2.3",
